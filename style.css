@@ -1,0 +1,24 @@
+header {
+    background-color: rgb(8, 32, 41);
+}
+
+.header_style {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main_content {
+    background-color: rgb(5, 23, 30);
+}
+
+.content_stopper {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+footer {
+    background-color: rgb(8, 32, 41);
+}
