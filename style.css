@@ -1,10 +1,19 @@
 header {
     background-color: rgb(8, 32, 41);
+    height: 100px;
+    display: flex;
+    align-items: center;
 }
 
 .header_style {
     display: flex;
     justify-content: space-between;
+}
+
+.content_stopper_header {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .main_content {
@@ -19,6 +28,40 @@ header {
     flex-wrap: wrap;
 }
 
+#mainContent {
+    min-height: 100vh;
+    gap: 42px;
+    display: flex;
+    justify-content: center;
+}
+
+.show_main_content {
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+.show_main_content img {
+    height: 150px;
+}
+
 footer {
     background-color: rgb(8, 32, 41);
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.next_20_button {
+    height: 80px;
+    cursor: pointer;
+    background-color: rgb(59, 7, 7);
+    color: white;
+    width: 150px;
+}
+
+.button_middle {
+    display: flex;
+    justify-content: center;
+    margin-block: 20px;
 }

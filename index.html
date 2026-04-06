@@ -22,13 +22,14 @@
 </head>
 
 <body onload="init()">
+
     <header>
-        <div class="content_stopper">
+        <div class="content_stopper_header">
             <article class="header_style">
                 <h1>Pokedex</h1>
                 <div>
-                    <input type="text" placeholder="search your pokemon...">
-                    <button>search</button>
+                    <input id="inputPokemon" type="text" placeholder="pokemon...(min 3 letters)">
+                    <button onclick="searchPokemon()">search</button>
                 </div>
             </article>
         </div>
@@ -38,12 +39,15 @@
         <div class="content_stopper" id="mainContent">
 
         </div>
+
+        <div class="button_middle">
+            <button class="next_20_button" onclick="showNext20()">Next 20</button>
+        </div>
+
     </main>
 
     <footer>
-        <div class="content_stopper">
             <p>Mailadresse</p>
-        </div>
     </footer>
 
 </body>
