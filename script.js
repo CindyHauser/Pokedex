@@ -42,13 +42,25 @@ async function getPokemonNames(){
 
     for (let indexName = 0; indexName < responseNameToJson.results.length; indexName++) {
         let pokemonNamesRef = responseNameToJson.results[indexName];
-        pokemonNames.push(pokemonNamesRef.name);                 
+        pokemonNames.push(pokemonNamesRef.name);                
     };
 };
 
 function searchPokemon(){
     let inputPokemonRef = document.getElementById('inputPokemon');
-    if (inputPokemonRef.value >= 3){
-        pokemonNames.filter()
-    }
-}
+    if (inputPokemonRef.value.length >= 3){
+       let resultNames = pokemonNames.filter(name=>name.toLowerCase().startsWith(inputPokemonRef.value.toLowerCase()));
+    //    console.log(resultNames);       
+       searchPokemonDetails(resultNames);
+    }; 
+};
+
+async function searchPokemonDetails(resultNames){  
+    for (let i = 0; i < resultNames.length; i++) {
+
+        let responseDetails = await fetch(`https://pokeapi.co/api/v2/pokemon/${resultNames[i]}`);
+        let responseDetailsToJson = await responseDetails.json();
+        console.log(responseDetailsToJson);
+        console.log(resultNames);
+    };
+};
