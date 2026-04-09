@@ -1,5 +1,4 @@
 let pokemonNames = [];
-
 let begin = 0;
 
 function init() {
@@ -35,32 +34,35 @@ async function showNext20() {
 
 //input-field to search for pokemon:
 
-async function getPokemonNames(){
+async function getPokemonNames() {
     let BASE_URL_NAMES = "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0";
     let responseName = await fetch(BASE_URL_NAMES);
     let responseNameToJson = await responseName.json();
 
     for (let indexName = 0; indexName < responseNameToJson.results.length; indexName++) {
         let pokemonNamesRef = responseNameToJson.results[indexName];
-        pokemonNames.push(pokemonNamesRef.name);                
+        pokemonNames.push(pokemonNamesRef.name);
     };
 };
 
-function searchPokemon(){
+function searchPokemon() {
     let inputPokemonRef = document.getElementById('inputPokemon');
-    if (inputPokemonRef.value.length >= 3){
-       let resultNames = pokemonNames.filter(name=>name.toLowerCase().startsWith(inputPokemonRef.value.toLowerCase()));
-    //    console.log(resultNames);       
-       searchPokemonDetails(resultNames);
-    }; 
+    if (inputPokemonRef.value.length >= 3) {
+        let resultNames = pokemonNames.filter(name => name.toLowerCase().startsWith(inputPokemonRef.value.toLowerCase()));
+        if (resultNames.length > 0) {
+            showPokemonDetails(resultNames);
+        };
+    };
 };
 
-async function searchPokemonDetails(resultNames){  
-    for (let i = 0; i < resultNames.length; i++) {
+async function showPokemonDetails(resultNames) {
+    let mainContentRef = document.getElementById('mainContent');
+    mainContentRef.innerHTML = "";
 
+    for (let i = 0; i < resultNames.length; i++) {
         let responseDetails = await fetch(`https://pokeapi.co/api/v2/pokemon/${resultNames[i]}`);
-        let responseDetailsToJson = await responseDetails.json();
-        console.log(responseDetailsToJson);
-        console.log(resultNames);
+        let searchedPokemons = await responseDetails.json();
+        mainContentRef.innerHTML += renderSearchedPokemonsTemplate(searchedPokemons);
+        // console.dir(searchedPokemons);
     };
 };
