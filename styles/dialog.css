@@ -1,0 +1,41 @@
+#dialog_window {
+    position: fixed;
+    margin: auto;
+    padding: 0px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+#dialog_window::backdrop {
+    opacity: 0.5;
+    background-color: black;
+}
+
+.dialog_style {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 500px;
+    width: 350px;
+    padding: 10px;
+    background-color: rgb(8, 32, 41);
+    color: beige;
+}
+
+.dialog_style header {
+    font-size: 24px;
+    text-decoration: underline;
+}
+
+.dialog_main_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dialog_pokemon_img {
+    height: 226px;
+    background-color: black;
+    border-radius: 10px;
+    margin-block: 20px;
+}

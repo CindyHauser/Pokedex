@@ -1,0 +1,15 @@
+.bg_grass {
+    background-color: rgb(6, 121, 6);
+}
+
+.bg_fire {
+    background-color: rgba(245, 68, 14, 0.575);
+}
+
+.bg_water {
+    background-color: rgba(5, 85, 233, 0.74);
+}
+
+.bg_bug {
+    background-color: rgba(102, 6, 6, 0.575);
+}

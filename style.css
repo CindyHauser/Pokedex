@@ -1,4 +1,8 @@
-header {
+.d_none{
+    display: none;
+}
+
+.header_main {
     background-color: rgb(8, 32, 41);
     height: 100px;
     display: flex;
@@ -38,13 +42,35 @@ header {
 .show_main_content {
     border: 1px solid white;
     border-radius: 10px;
+    cursor: pointer;
+    height: 260px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    box-shadow: 2px 2px white;
+}
+
+.show_main_content h2 {
+    text-shadow: 2px 2px 5px #000000;
 }
 
 .show_main_content img {
+    margin-top: 10px;
+    margin-bottom: 15px;
     height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
-footer {
+.pokemon_type_name {
+    border-radius: 10px;
+    border: 1px solid white;
+    padding: 5px;
+}
+
+.footer_main {
     background-color: rgb(8, 32, 41);
     height: 100px;
     display: flex;

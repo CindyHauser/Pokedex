@@ -1,4 +1,6 @@
 let pokemonNames = [];
+let allPokemons = [];
+
 let begin = 0;
 
 function init() {
@@ -17,8 +19,10 @@ async function fetchPokemon() {
         let pokemon = responseToJson.results[index];
         let detailResponse = await fetch(pokemon.url);
         let pokemonDetails = await detailResponse.json();
-
-        renderPokemons(pokemonDetails);
+        allPokemons.push(pokemonDetails);
+        console.log(allPokemons);
+        
+        renderPokemons(pokemonDetails);       
     };
 };
 
@@ -63,6 +67,5 @@ async function showPokemonDetails(resultNames) {
         let responseDetails = await fetch(`https://pokeapi.co/api/v2/pokemon/${resultNames[i]}`);
         let searchedPokemons = await responseDetails.json();
         mainContentRef.innerHTML += renderSearchedPokemonsTemplate(searchedPokemons);
-        // console.dir(searchedPokemons);
     };
 };
