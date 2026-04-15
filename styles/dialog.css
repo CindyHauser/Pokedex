@@ -17,7 +17,6 @@
     align-items: center;
     height: 500px;
     width: 350px;
-    padding: 10px;
     background-color: rgb(8, 32, 41);
     color: beige;
 }
@@ -35,7 +34,6 @@
 
 .dialog_pokemon_img {
     height: 226px;
-    background-color: black;
     border-radius: 10px;
     margin-block: 20px;
 }

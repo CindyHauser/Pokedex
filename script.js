@@ -20,7 +20,6 @@ async function fetchPokemon() {
         let detailResponse = await fetch(pokemon.url);
         let pokemonDetails = await detailResponse.json();
         allPokemons.push(pokemonDetails);
-        console.log(allPokemons);
         
         renderPokemons(pokemonDetails);       
     };

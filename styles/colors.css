@@ -3,13 +3,13 @@
 }
 
 .bg_fire {
-    background-color: rgba(245, 68, 14, 0.575);
+    background-color: rgba(245, 68, 14);
 }
 
 .bg_water {
-    background-color: rgba(5, 85, 233, 0.74);
+    background-color: rgba(5, 85, 233);
 }
 
 .bg_bug {
-    background-color: rgba(102, 6, 6, 0.575);
+    background-color: rgba(102, 6, 6);
 }
