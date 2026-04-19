@@ -13,3 +13,59 @@
 .bg_bug {
     background-color: rgba(102, 6, 6);
 }
+
+.bg_electric {
+    background-color: grey;
+}
+
+.bg_normal {
+    background-color: rgb(147, 196, 158);
+}
+
+.bg_ice {
+    background-color: rgb(48, 178, 218);
+}
+
+.bg_fighting {
+    background-color: rgb(134, 45, 45);
+}
+
+.bg_poison {
+    background-color: rgb(22, 92, 22);
+}
+
+.bg_ground {
+    background-color: rgb(88, 36, 12);
+}
+
+.bg_flying {
+    background-color: rgb(119, 20, 103);
+}
+
+.bg_psychic {
+    background-color: rgb(77, 2, 37);
+}
+
+.bg_rock {
+    background-color: rgb(61, 33, 2);
+}
+
+.bg_ghost {
+    background-color: rgb(230, 152, 152);
+}
+
+.bg_dragon {
+    background-color: rgb(85, 59, 3);
+}
+
+.bg_steel {
+    background-color: rgb(49, 42, 42);
+}
+
+.bg_dark {
+    background-color: rgb(20, 19, 19);
+}
+
+.bg_fairy {
+    background-color: rgb(134, 4, 106);
+}

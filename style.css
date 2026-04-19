@@ -1,9 +1,9 @@
-.d_none{
+.d_none {
     display: none;
 }
 
 .header_main {
-    background-color: rgb(8, 32, 41);
+    background-color: rgb(11, 44, 56);
     height: 100px;
     display: flex;
     align-items: center;
@@ -12,6 +12,28 @@
 .header_style {
     display: flex;
     justify-content: space-between;
+}
+
+.pokedex_pokeball {
+    display: flex;
+    gap: 10px;
+}
+
+.pokeball {
+    height: 32px;
+}
+
+.input_pokemon {
+    padding: 6px;
+    border-radius: 10px;
+    background-color: beige;
+}
+
+.btn_search_reset {
+    background-color: rgb(59, 7, 7);
+    color: white;
+    border-radius: 10px;
+    padding: 6px;
 }
 
 .content_stopper_header {
@@ -37,13 +59,13 @@
     gap: 42px;
     display: flex;
     justify-content: center;
+    margin-top: 20px;
 }
 
 .show_main_content {
     color: white;
     border: 1px solid white;
     border-radius: 10px;
-    cursor: pointer;
     height: 260px;
     width: 200px;
     display: flex;
@@ -54,7 +76,7 @@
 }
 
 .show_main_content:hover {
-    box-shadow: 4px 4px 4px 4px white;    
+    box-shadow: 4px 4px 4px 4px white;
 }
 
 .show_main_content h2 {
@@ -64,7 +86,7 @@
 .show_main_content img {
     margin-top: 10px;
     margin-bottom: 15px;
-    height: 150px;
+    height: 140px;
     object-fit: cover;
     border-radius: 10px;
 }
@@ -82,7 +104,7 @@
 }
 
 .footer_main {
-    background-color: rgb(8, 32, 41);
+    background-color: rgb(11, 44, 56);
     height: 100px;
     display: flex;
     justify-content: center;
@@ -91,7 +113,6 @@
 
 .next_20_button {
     height: 80px;
-    cursor: pointer;
     background-color: rgb(59, 7, 7);
     color: white;
     width: 150px;

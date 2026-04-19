@@ -17,8 +17,9 @@
     align-items: center;
     height: 500px;
     width: 350px;
-    background-color: rgb(8, 32, 41);
     color: beige;
+    padding-block: 20px;
+    text-shadow: 1px 2px 3px black;
 }
 
 .dialog_style header {
@@ -30,10 +31,79 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100vh;
+}
+
+.progress_bar_stats {
+    height: 12px;
+    width: 100%;
+    background-color: beige;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.progress_fill {
+    font-size: 12px;
+    height: 100%;
+    background-color: blueviolet;
+    display: block;
+    padding-left: 6px;
+}
+
+.dialog_img_and_types {
+    border-bottom: 6px double black;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.dialog_type_flex {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pokemon_type_name_dialog {
+    border-radius: 10px;
+    border: 1px solid white;
+    box-shadow: 1px 1px 1px white;
+    padding: 5px;
+}
+
+.btn_stats {
+    background-color: rgb(59, 7, 7);
+    color: beige;
+    border-radius: 10px;
+    padding-block: 5px;
+    padding-inline: 12px;
+}
+
+.pokemon_stats {
+    width: 100%;
+    text-align: left;
+}
+
+ul li {
+    margin-top: 12px;
 }
 
 .dialog_pokemon_img {
-    height: 226px;
+    height: 180px;
     border-radius: 10px;
-    margin-block: 20px;
+    margin-bottom: 20px;
+}
+
+.footer_dialog {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.switch_to_next_pokemon {
+    height: 42px;
+    background-color: rgb(59, 7, 7);
+    color: beige;
+    width: 66px;
+    border-radius: 10px;
+    font-size: 30px;
 }

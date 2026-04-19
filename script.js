@@ -8,7 +8,7 @@ function init() {
     getPokemonNames();
 };
 
-//show pokemon and onclick-button for the next 20:
+//show pokemon and show onclick-button for the next 20:
 
 async function fetchPokemon() {
     let BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=0&offset=${begin}`;
@@ -20,6 +20,9 @@ async function fetchPokemon() {
         let detailResponse = await fetch(pokemon.url);
         let pokemonDetails = await detailResponse.json();
         allPokemons.push(pokemonDetails);
+
+        console.log(allPokemons);
+        
         
         renderPokemons(pokemonDetails);       
     };
@@ -53,6 +56,7 @@ function searchPokemon() {
     if (inputPokemonRef.value.length >= 3) {
         let resultNames = pokemonNames.filter(name => name.toLowerCase().startsWith(inputPokemonRef.value.toLowerCase()));
         if (resultNames.length > 0) {
+            inputPokemonRef.value = "";
             showPokemonDetails(resultNames);
         };
     };
@@ -64,7 +68,17 @@ async function showPokemonDetails(resultNames) {
 
     for (let i = 0; i < resultNames.length; i++) {
         let responseDetails = await fetch(`https://pokeapi.co/api/v2/pokemon/${resultNames[i]}`);
-        let searchedPokemons = await responseDetails.json();
-        mainContentRef.innerHTML += renderSearchedPokemonsTemplate(searchedPokemons);
+        let pokemonDetails = await responseDetails.json();
+        allPokemons.push(pokemonDetails);
+        mainContentRef.innerHTML += renderPokemonTemplates(pokemonDetails);
     };
+};
+
+function resetWebsite(){
+    let inputPokemonRef = document.getElementById('inputPokemon');
+    inputPokemonRef.value = '';
+    allPokemons = [];
+    document.getElementById('mainContent').innerHTML = "";
+    begin = 0;
+    fetchPokemon();
 };

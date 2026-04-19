@@ -11,41 +11,83 @@ function renderPokemonTemplates(pokemonDetails) {
                 </button>`;
 };
 
-function renderSearchedPokemonsTemplate(searchedPokemons){
-        return `<button class="show_main_content" onclick="toggleDialog()>
-                <h2>${searchedPokemons.name}</h2>
-                <img src="${searchedPokemons?.sprites?.other?.home?.front_default 
-                                     ?? searchedPokemons.sprites.other["official-artwork"].front_default}" alt="Pokemon">
-                </button>`;
-};
-
 function showDialogPokemonsTemplate(pokemon){
         return `<section class="dialog_style bg_${pokemon.types[0].type.name}">
                     <header>#${pokemon.id} 
                                     ${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</header>
                     <main class="dialog_main_content bg_${pokemon.types[0].type.name}">
+                     <div class="dialog_img_and_types">
                            <img class="dialog_pokemon_img" src="${pokemon?.sprites?.other?.home?.front_default 
                                      ?? pokemon.sprites.other["official-artwork"].front_default}" alt="Pokemon">
-                        <div>
-                                <span class="pokemon_type_name">${pokemon.types[0].type.name}</span>
-                                ${pokemon.types[1] ? `<span class="pokemon_type_name">${pokemon?.types[1]?.type?.name}</span>` : ""}
-                        </div>         
+                        <div class="dialog_type_flex">
+                                <span class="pokemon_type_name_dialog">${pokemon.types[0].type.name}</span>
+                                ${pokemon.types[1] ? `<span class="pokemon_type_name_dialog">${pokemon?.types[1]?.type?.name}</span>` : ""}
+                        </div>      
+                     </div> 
+                        ${showOtherStatsInDialog(pokemon.id)}
+                     <div id="changeStats" class="pokemon_stats">
                         <ul>
                           <li>Height: ${pokemon.height * 10} cm</li>
                           <li>Weight: ${pokemon.weight / 10} kg</li>
                           <li>Abilities: ${pokemon.abilities.map(p=>p.ability.name).join(', ')}</li>
                         </ul>
+                      </div>
                     </main>
-                    <footer>
+                    <footer class="footer_dialog">
                         ${showDialogFooterTemplate(pokemon)}
                     </footer>
                     </section>`;
 };
 
+function showOtherStatsInDialog(pokemonID) {        
+        return `
+        <div>
+                    <button class="btn_stats" onclick="showNormalStats(${pokemonID})">normal</button>
+                    <button class="btn_stats" onclick="showFightStats(${pokemonID})">fight</button>
+        </div>
+        `
+};
+
+function showNormalStats(pokemonID) {
+        let pokemonNormalStats = allPokemons.find(p => p.id === pokemonID);
+        let normalStats = document.getElementById('changeStats');
+        normalStats.innerHTML =  `
+                        <ul>
+                          <li>Height: ${pokemonNormalStats.height * 10} cm</li>
+                          <li>Weight: ${pokemonNormalStats.weight / 10} kg</li>
+                          <li>Abilities: ${pokemonNormalStats.abilities.map(p=>p.ability.name).join(', ')}</li>
+                        </ul>        
+        `
+};
+
+function showFightStats(pokemonID) {
+        let pokemonFightStats = allPokemons.find(p => p.id === pokemonID);
+        let normalStats = document.getElementById('changeStats');
+        normalStats.innerHTML =  `
+                        <ul>                          
+                          <li>HP: 
+                              <div class="progress_bar_stats">
+                                <div class="progress_fill" style="width:${pokemonFightStats.stats[0].base_stat}%;">${pokemonFightStats.stats[0].base_stat}%</div>
+                              </div>
+                          </li>
+                          <li>Attack: 
+                             <div class="progress_bar_stats">
+                                <div class="progress_fill" style="width:${pokemonFightStats.stats[1].base_stat}%;">${pokemonFightStats.stats[1].base_stat}%</div>
+                              </div>
+                          </li>
+                          <li>Defense: 
+                             <div class="progress_bar_stats">
+                                <div class="progress_fill" style="width:${pokemonFightStats.stats[2].base_stat}%;">${pokemonFightStats.stats[2].base_stat}%</div>
+                              </div>
+                          </li>
+                        </ul>        
+        `
+};
+
 function  showDialogFooterTemplate(pokemon) {
         return `
-        <button onclick="switchToLeftPokemon(${pokemon.id})">links</button>
-        <button onclick="switchToRightPokemon(${pokemon.id})">rechts</button>`;
+        <button id="btnLeft" class="switch_to_next_pokemon" onclick="switchToLeftPokemon(${pokemon.id})">&#8678;</button>
+        <button id="btnRight" class="switch_to_next_pokemon" onclick="switchToRightPokemon(${pokemon.id})">&#8680;</button>`;
 };
 
                           

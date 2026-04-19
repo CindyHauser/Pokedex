@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
 
+    <link rel="shortcut icon" href="./img/pokeball.png" type="image/x-icon">
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="stylesheet" href="./styles/dialog.css">
@@ -28,10 +30,14 @@
     <header class="header_main">
         <div class="content_stopper_header">
             <article class="header_style">
-                <h1>Pokedex</h1>
+                <div class="pokedex_pokeball">
+                    <img class="pokeball" src="./img/pokeball.png" alt="Pokeball">
+                    <h1>Pokedex</h1>
+                </div>
                 <div>
-                    <input id="inputPokemon" type="text" placeholder="pokemon...(min 3 letters)">
-                    <button onclick="searchPokemon()">search</button>
+                    <input class="input_pokemon" id="inputPokemon" type="text" placeholder="pokemon...(min 3 letters)">
+                    <button class="btn_search_reset" onclick="searchPokemon()">search</button>
+                    <button class="btn_search_reset" onclick="resetWebsite()">reset</button>
                 </div>
             </article>
         </div>
