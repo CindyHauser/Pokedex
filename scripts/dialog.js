@@ -6,7 +6,7 @@ function toggleDialog(name) {
     } else {
         DIALOG_WINDOW.showModal();
         showDialogPokemons(name);
-        // DIALOG_WINDOW.classList.add('opened_dialog');
+        navigationButtons();
     };
 };
 

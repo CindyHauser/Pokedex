@@ -3,6 +3,8 @@ let allPokemons = [];
 
 let begin = 0;
 
+let showNaviBtn = true;
+
 function init() {
     fetchPokemon();
     getPokemonNames();
@@ -21,10 +23,7 @@ async function fetchPokemon() {
         let pokemonDetails = await detailResponse.json();
         allPokemons.push(pokemonDetails);
 
-        console.log(allPokemons);
-        
-        
-        renderPokemons(pokemonDetails);       
+        renderPokemons(pokemonDetails);
     };
 };
 
@@ -40,6 +39,19 @@ async function showNext20() {
 
 //input-field to search for pokemon:
 
+function navigationButtons() {
+    let btnLeftRef = document.getElementById('btnLeft');
+    let btnRightRef = document.getElementById('btnRight');
+
+    if (showNaviBtn == false) {
+        btnLeftRef.classList.add("d_none");
+        btnRightRef.classList.add("d_none");
+    } else {
+        btnLeftRef.classList.remove('d_none');
+        btnRightRef.classList.remove('d_none');
+    };
+};
+
 async function getPokemonNames() {
     let BASE_URL_NAMES = "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0";
     let responseName = await fetch(BASE_URL_NAMES);
@@ -53,18 +65,23 @@ async function getPokemonNames() {
 
 function searchPokemon() {
     let inputPokemonRef = document.getElementById('inputPokemon');
+    let tooShortRef = document.getElementById('tooShort');
+    tooShortRef.innerHTML = "";
     if (inputPokemonRef.value.length >= 3) {
         let resultNames = pokemonNames.filter(name => name.toLowerCase().startsWith(inputPokemonRef.value.toLowerCase()));
         if (resultNames.length > 0) {
             inputPokemonRef.value = "";
             showPokemonDetails(resultNames);
         };
+    } else {
+        tooShortRef.innerHTML = "Enter at least 3 letters.";
     };
 };
 
 async function showPokemonDetails(resultNames) {
     let mainContentRef = document.getElementById('mainContent');
     mainContentRef.innerHTML = "";
+    showNaviBtn = false;
 
     for (let i = 0; i < resultNames.length; i++) {
         let responseDetails = await fetch(`https://pokeapi.co/api/v2/pokemon/${resultNames[i]}`);
@@ -74,10 +91,13 @@ async function showPokemonDetails(resultNames) {
     };
 };
 
-function resetWebsite(){
+function resetWebsite() {
     let inputPokemonRef = document.getElementById('inputPokemon');
+    let tooShortRef = document.getElementById('tooShort');
     inputPokemonRef.value = '';
+    tooShortRef.innerHTML = "";
     allPokemons = [];
+    showNaviBtn = true;
     document.getElementById('mainContent').innerHTML = "";
     begin = 0;
     fetchPokemon();

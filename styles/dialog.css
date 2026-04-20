@@ -1,3 +1,7 @@
+.d_none {
+    display: none;
+}
+
 #dialog_window {
     position: fixed;
     margin: auto;
