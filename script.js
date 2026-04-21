@@ -1,8 +1,6 @@
 let pokemonNames = [];
 let allPokemons = [];
-
 let begin = 0;
-
 let showNaviBtn = true;
 
 function init() {
@@ -13,6 +11,8 @@ function init() {
 //show pokemon and show onclick-button for the next 20:
 
 async function fetchPokemon() {
+    let loaderRef = document.getElementById('loader');
+    loaderRef.classList.add('active');
     let BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=0&offset=${begin}`;
     let response = await fetch(BASE_URL);
     let responseToJson = await response.json();
@@ -22,14 +22,15 @@ async function fetchPokemon() {
         let detailResponse = await fetch(pokemon.url);
         let pokemonDetails = await detailResponse.json();
         allPokemons.push(pokemonDetails);
-
         renderPokemons(pokemonDetails);
     };
+    loaderRef.classList.remove('active');
 };
 
 function renderPokemons(pokemonDetails) {
     let mainContentRef = document.getElementById('mainContent');
     mainContentRef.innerHTML += renderPokemonTemplates(pokemonDetails);
+    nextButton();
 };
 
 async function showNext20() {
@@ -51,6 +52,15 @@ function navigationButtons() {
         btnRightRef.classList.remove('d_none');
     };
 };
+
+function nextButton() {
+    let next20BtnRef = document.getElementById('next20Btn');
+    if (showNaviBtn == false) {
+        next20BtnRef.classList.add("d_none");
+    } else {
+        next20BtnRef.classList.remove('d_none');
+    }
+}
 
 async function getPokemonNames() {
     let BASE_URL_NAMES = "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0";
@@ -79,6 +89,8 @@ function searchPokemon() {
 };
 
 async function showPokemonDetails(resultNames) {
+    let loaderRef = document.getElementById('loader');
+    loaderRef.classList.add('active');
     let mainContentRef = document.getElementById('mainContent');
     mainContentRef.innerHTML = "";
     showNaviBtn = false;
@@ -88,7 +100,9 @@ async function showPokemonDetails(resultNames) {
         let pokemonDetails = await responseDetails.json();
         allPokemons.push(pokemonDetails);
         mainContentRef.innerHTML += renderPokemonTemplates(pokemonDetails);
+        nextButton();
     };
+    loaderRef.classList.remove('active');
 };
 
 function resetWebsite() {

@@ -36,24 +36,29 @@
                 </div>
                 <div>
                     <div>
-                    <input class="input_pokemon" id="inputPokemon" type="text" placeholder="pokemon...(min 3 letters)">
-                    <button class="btn_search_reset" onclick="searchPokemon()">search</button>
-                    <button class="btn_search_reset" onclick="resetWebsite()">reset</button>
+                        <input class="input_pokemon" id="inputPokemon" type="text"
+                            placeholder="pokemon...(min 3 letters)">
+                        <button class="btn_search_reset" onclick="searchPokemon()">search</button>
+                        <button class="btn_search_reset" onclick="resetWebsite()">reset</button>
                     </div>
                     <p id="tooShort"></p>
                 </div>
-                
+
             </article>
         </div>
     </header>
 
     <main class="main_content">
+        <div id="loader" class="d_none">
+            <img class="spinner" src="./img/pokeball.png" alt="Loading...">
+            <!-- <div class="spinner"></div> -->
+        </div>
         <div class="content_stopper" id="mainContent">
 
         </div>
 
         <div class="button_middle">
-            <button class="next_20_button" onclick="showNext20()">Next 20</button>
+            <button id="next20Btn" class="next_20_button" onclick="showNext20()">Next 20</button>
         </div>
 
     </main>
