@@ -94,7 +94,6 @@ async function showPokemonDetails(resultNames) {
     let mainContentRef = document.getElementById('mainContent');
     mainContentRef.innerHTML = "";
     showNaviBtn = false;
-
     for (let i = 0; i < resultNames.length; i++) {
         let responseDetails = await fetch(`https://pokeapi.co/api/v2/pokemon/${resultNames[i]}`);
         let pokemonDetails = await responseDetails.json();

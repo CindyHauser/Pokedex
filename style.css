@@ -38,6 +38,7 @@
 .header_style {
     display: flex;
     justify-content: space-between;
+    padding-inline: 12px;
 }
 
 .pokedex_pokeball {

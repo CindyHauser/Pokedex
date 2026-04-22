@@ -44,8 +44,7 @@ function showOtherStatsInDialog(pokemonID) {
         <div>
                     <button class="btn_stats" onclick="showNormalStats(${pokemonID})">normal</button>
                     <button class="btn_stats" onclick="showFightStats(${pokemonID})">fight</button>
-        </div>
-        `
+        </div>`
 };
 
 function showNormalStats(pokemonID) {
@@ -56,8 +55,7 @@ function showNormalStats(pokemonID) {
                           <li>Height: ${pokemonNormalStats.height * 10} cm</li>
                           <li>Weight: ${pokemonNormalStats.weight / 10} kg</li>
                           <li>Abilities: ${pokemonNormalStats.abilities.map(p=>p.ability.name).join(', ')}</li>
-                        </ul>        
-        `
+                        </ul>`
 };
 
 function showFightStats(pokemonID) {
@@ -80,8 +78,7 @@ function showFightStats(pokemonID) {
                                 <div class="progress_fill" style="width:${pokemonFightStats.stats[2].base_stat}%;">${pokemonFightStats.stats[2].base_stat}%</div>
                               </div>
                           </li>
-                        </ul>        
-        `
+                        </ul>`
 };
 
 function  showDialogFooterTemplate(pokemon) {

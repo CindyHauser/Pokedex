@@ -1,0 +1,46 @@
+@media (max-width: 500px){
+    .header_style {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding-inline: 10px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .pokeball {
+        height: 26px;
+    }
+
+    .btn_search_reset {
+        padding: 4px;
+    }
+
+    .input_pokemon {
+        padding: 4px;
+        width: 164px;
+    }
+
+    .header_main {
+        height: 120px;
+    }
+
+    .dialog_style {
+        width: 270px;
+        height: 470px;
+    }
+
+    .dialog_pokemon_img {
+        height: 164px;
+    }
+
+    .next_20_button {
+        height: 48px;
+    }
+
+    .footer_main {
+        height: 56px;
+    }
+}
