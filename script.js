@@ -11,6 +11,8 @@ function init() {
 //show pokemon and show onclick-button for the next 20:
 
 async function fetchPokemon() {
+    let mainContentRef = document.getElementById('mainContent');
+    let html = '';
     let loaderRef = document.getElementById('loader');
     loaderRef.classList.add('active');
     let BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=0&offset=${begin}`;
@@ -18,19 +20,19 @@ async function fetchPokemon() {
     let responseToJson = await response.json();
 
     for (let index = 0; index < responseToJson.results.length; index++) {
-        let pokemon = responseToJson.results[index];
+        try {
+                    let pokemon = responseToJson.results[index];
         let detailResponse = await fetch(pokemon.url);
         let pokemonDetails = await detailResponse.json();
         allPokemons.push(pokemonDetails);
-        renderPokemons(pokemonDetails);
+        html += renderPokemonTemplates(pokemonDetails);            
+        } catch (error) {
+            console.error('Error loading the Pokémon.');            
+        };
     };
-    loaderRef.classList.remove('active');
-};
-
-function renderPokemons(pokemonDetails) {
-    let mainContentRef = document.getElementById('mainContent');
-    mainContentRef.innerHTML += renderPokemonTemplates(pokemonDetails);
+    mainContentRef.innerHTML += html;
     nextButton();
+    loaderRef.classList.remove('active');
 };
 
 async function showNext20() {
@@ -47,10 +49,12 @@ function navigationButtons() {
     if (showNaviBtn == false) {
         btnLeftRef.classList.add("d_none");
         btnRightRef.classList.add("d_none");
-    } else {
-        btnLeftRef.classList.remove('d_none');
-        btnRightRef.classList.remove('d_none');
     };
+    // else {
+    //     btnLeftRef.classList.remove('d_none');
+    //     btnRightRef.classList.remove('d_none');
+    // }
+    ;
 };
 
 function nextButton() {
@@ -89,18 +93,20 @@ function searchPokemon() {
 };
 
 async function showPokemonDetails(resultNames) {
-    let loaderRef = document.getElementById('loader');
-    loaderRef.classList.add('active');
     let mainContentRef = document.getElementById('mainContent');
     mainContentRef.innerHTML = "";
+    let html = '';
+    let loaderRef = document.getElementById('loader');
+    loaderRef.classList.add('active');
     showNaviBtn = false;
     for (let i = 0; i < resultNames.length; i++) {
         let responseDetails = await fetch(`https://pokeapi.co/api/v2/pokemon/${resultNames[i]}`);
         let pokemonDetails = await responseDetails.json();
         allPokemons.push(pokemonDetails);
-        mainContentRef.innerHTML += renderPokemonTemplates(pokemonDetails);
-        nextButton();
+        html += renderPokemonTemplates(pokemonDetails);
     };
+    mainContentRef.innerHTML += html;
+    nextButton();
     loaderRef.classList.remove('active');
 };
 

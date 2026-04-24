@@ -2,6 +2,10 @@
     display: none;
 }
 
+.invisible {
+    visibility: hidden;
+}
+
 #dialog_window {
     position: fixed;
     margin: auto;
@@ -23,6 +27,7 @@
     width: 350px;
     color: beige;
     padding-block: 20px;
+    padding-inline: 52px;
     text-shadow: 1px 2px 3px black;
 }
 
@@ -99,7 +104,7 @@ ul li {
 
 .footer_dialog {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
 }
 

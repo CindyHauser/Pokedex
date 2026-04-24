@@ -83,8 +83,7 @@ function showFightStats(pokemonID) {
 
 function  showDialogFooterTemplate(pokemon) {
         return `
-        <button id="btnLeft" class="switch_to_next_pokemon" onclick="switchToLeftPokemon(${pokemon.id})">&#8678;</button>
-        <button id="btnRight" class="switch_to_next_pokemon" onclick="switchToRightPokemon(${pokemon.id})">&#8680;</button>`;
+        <button id="btnLeft" class="switch_to_next_pokemon ${pokemon.id === 1 ? 'invisible' : ''}" onclick="switchToLeftPokemon(${pokemon.id})">&#8678;</button>
+        <button id="btnRight" class="switch_to_next_pokemon" onclick="switchToRightPokemon(${pokemon.id})">&#8680;</button>
+          `;
 };
-
-                          
