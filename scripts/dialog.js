@@ -18,15 +18,7 @@ function showDialogPokemons(name) {
     let dialogContentRef = document.getElementById('dialogContent');
     let pokemon = allPokemons.find(pokemon => pokemon.name === name);
     dialogContentRef.innerHTML = showDialogPokemonsTemplate(pokemon);
-    // pokemonId(pokemon.id);
 };
-
-// function pokemonId(pokemonID) {
-//     let btnLeftRef = document.getElementById('btnLeft');
-//     if (pokemonID = 1) {
-//         btnLeftRef.classList.add('d_none');
-//     };
-// };
 
 function switchToLeftPokemon(pokemonID) {
     let dialogContentRef = document.getElementById('dialogContent');

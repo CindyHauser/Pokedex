@@ -18,16 +18,15 @@ async function fetchPokemon() {
     let BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=0&offset=${begin}`;
     let response = await fetch(BASE_URL);
     let responseToJson = await response.json();
-
     for (let index = 0; index < responseToJson.results.length; index++) {
         try {
-                    let pokemon = responseToJson.results[index];
-        let detailResponse = await fetch(pokemon.url);
-        let pokemonDetails = await detailResponse.json();
-        allPokemons.push(pokemonDetails);
-        html += renderPokemonTemplates(pokemonDetails);            
+            let pokemon = responseToJson.results[index];
+            let detailResponse = await fetch(pokemon.url);
+            let pokemonDetails = await detailResponse.json();
+            allPokemons.push(pokemonDetails);
+            html += renderPokemonTemplates(pokemonDetails);
         } catch (error) {
-            console.error('Error loading the Pokémon.');            
+            console.error('Error loading the Pokémon.');
         };
     };
     mainContentRef.innerHTML += html;
@@ -50,11 +49,6 @@ function navigationButtons() {
         btnLeftRef.classList.add("d_none");
         btnRightRef.classList.add("d_none");
     };
-    // else {
-    //     btnLeftRef.classList.remove('d_none');
-    //     btnRightRef.classList.remove('d_none');
-    // }
-    ;
 };
 
 function nextButton() {
@@ -82,12 +76,14 @@ function searchPokemon() {
     let tooShortRef = document.getElementById('tooShort');
     tooShortRef.innerHTML = "";
     if (inputPokemonRef.value.length >= 3) {
-        let resultNames = pokemonNames.filter(name => name.toLowerCase().startsWith(inputPokemonRef.value.toLowerCase()));
+        let resultNames = pokemonNames.filter(name => name.toLowerCase().includes(inputPokemonRef.value.toLowerCase()));
         if (resultNames.length > 0) {
             inputPokemonRef.value = "";
             showPokemonDetails(resultNames);
+        } else {
+            tooShortRef.innerHTML = "Pokemon not found.";
         };
-    } else {
+    } if (inputPokemonRef.value.length < 3 && inputPokemonRef.value.length > 0) {
         tooShortRef.innerHTML = "Enter at least 3 letters.";
     };
 };
