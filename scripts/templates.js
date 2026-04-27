@@ -47,10 +47,8 @@ function showOtherStatsInDialog(pokemonID) {
         </div>`
 };
 
-function showNormalStats(pokemonID) {
-        let pokemonNormalStats = allPokemons.find(p => p.id === pokemonID);
-        let normalStats = document.getElementById('changeStats');
-        normalStats.innerHTML =  `
+function showNormalStatsTemplate(pokemonNormalStats) {
+  return  `
                         <ul>
                           <li>Height: ${pokemonNormalStats.height * 10} cm</li>
                           <li>Weight: ${pokemonNormalStats.weight / 10} kg</li>
@@ -58,10 +56,8 @@ function showNormalStats(pokemonID) {
                         </ul>`
 };
 
-function showFightStats(pokemonID) {
-        let pokemonFightStats = allPokemons.find(p => p.id === pokemonID);
-        let normalStats = document.getElementById('changeStats');
-        normalStats.innerHTML =  `
+function showFightStatsTemplates(pokemonFightStats) {
+        return  `
                         <ul>                          
                           <li>HP: 
                               <div class="progress_bar_stats">

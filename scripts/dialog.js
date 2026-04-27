@@ -16,8 +16,35 @@ function stopPropagationFunction(event) {
 
 function showDialogPokemons(name) {
     let dialogContentRef = document.getElementById('dialogContent');
-    let pokemon = allPokemons.find(pokemon => pokemon.name === name);
-    dialogContentRef.innerHTML = showDialogPokemonsTemplate(pokemon);
+    if (search == false) {
+        let pokemon = allPokemons.find(pokemon => pokemon.name === name);
+        dialogContentRef.innerHTML = showDialogPokemonsTemplate(pokemon);
+    } else {
+        let pokemonSearched = searchedPokemon.find(pokemon => pokemon.name === name);
+        dialogContentRef.innerHTML = showDialogPokemonsTemplate(pokemonSearched);
+    };
+};
+
+function showNormalStats(pokemonID) {
+    let normalStats = document.getElementById('changeStats');
+    if (search == false) {
+        let pokemonNormalStats = allPokemons.find(p => p.id === pokemonID);
+        normalStats.innerHTML = showNormalStatsTemplate(pokemonNormalStats);
+    } else {
+        let pokemonNormalStats = searchedPokemon.find(p => p.id === pokemonID);
+        normalStats.innerHTML = showNormalStatsTemplate(pokemonNormalStats);
+    };
+};
+
+function showFightStats(pokemonID) {
+    let normalStats = document.getElementById('changeStats');
+    if (search == false) {
+        let pokemonFightStats = allPokemons.find(p => p.id === pokemonID);
+        normalStats.innerHTML = showFightStatsTemplates(pokemonFightStats);
+    } else {
+        let pokemonFightStats = searchedPokemon.find(p => p.id === pokemonID);
+        normalStats.innerHTML = showFightStatsTemplates(pokemonFightStats);
+    };
 };
 
 function switchToLeftPokemon(pokemonID) {
